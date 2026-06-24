@@ -4,37 +4,37 @@
 using namespace std;
 
 double inchesToCentimeters(double inches) {
-    // TODO: return inches converted to centimeters.
+    // return inches converted to centimeters.
     return inches*CENTIMETERS_PER_INCH;
 }
 
 double centimetersToInches(double centimeters) {
-    // TODO: return centimeters converted to inches.
+    // return centimeters converted to inches.
     return centimeters/CENTIMETERS_PER_INCH;
 }
 
 double poundsToKilograms(double pounds) {
-    // TODO: return pounds converted to kilograms.
+    // return pounds converted to kilograms.
     return pounds/POUNDS_PER_KILOGRAM;
 }
 
 double kilogramsToPounds(double kilograms) {
-    // TODO: return kilograms converted to pounds.
+    // return kilograms converted to pounds.
     return kilograms*POUNDS_PER_KILOGRAM;
 }
 
 double fahrenheitToCelsius(double fahrenheit) {
-    // TODO: return Fahrenheit converted to Celsius.
+    // return Fahrenheit converted to Celsius.
     return ((fahrenheit-32) * 5 / 9);
 }
 
 double celsiusToFahrenheit(double celsius) {
-    // TODO: return Celsius converted to Fahrenheit.
+    // return Celsius converted to Fahrenheit.
     return ((celsius * 9 / 5) + 32);
 }
 
 bool isValidMenuChoice(int choice) {
-    // TODO: return true when choice is between EXIT_CHOICE and CELSIUS_TO_FAHRENHEIT.
+    // return true when choice is between EXIT_CHOICE and CELSIUS_TO_FAHRENHEIT.
     if (choice >= 0 && choice <= CELSIUS_TO_FAHRENHEIT) return true;
     return false;
 }
@@ -42,20 +42,17 @@ bool isValidMenuChoice(int choice) {
 bool requiresNonNegativeValue(int choice) {
     // Length and weight conversions cannot use negative values.
     // Temperature conversions may use negative values.
-    // TODO: return true for choices 1 through 4.
+    // return true for choices 1 through 4.
     if (choice >= INCHES_TO_CENTIMETERS && choice <= KILOGRAMS_TO_POUNDS) return true;
     return false;
 }
 
 bool isValidValueForChoice(int choice, double value) {
-    // TODO:
     // 1. Invalid menu choices should return false.
     // 2. Length and weight conversions should reject negative values.
     // 3. Temperature conversions should allow negative values.
     if (!isValidMenuChoice(choice)) return false;
-    if (requiresNonNegativeValue(choice) && value < 0){
-        return false;
-    }
+    if (requiresNonNegativeValue(choice) && value < 0) return false;
     return true;
 }
 
