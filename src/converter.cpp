@@ -5,36 +5,37 @@ using namespace std;
 
 double inchesToCentimeters(double inches) {
     // TODO: return inches converted to centimeters.
-    return 0.0;
+    return inches*CENTIMETERS_PER_INCH;
 }
 
 double centimetersToInches(double centimeters) {
     // TODO: return centimeters converted to inches.
-    return 0.0;
+    return centimeters/CENTIMETERS_PER_INCH;
 }
 
 double poundsToKilograms(double pounds) {
     // TODO: return pounds converted to kilograms.
-    return 0.0;
+    return pounds/POUNDS_PER_KILOGRAM;
 }
 
 double kilogramsToPounds(double kilograms) {
     // TODO: return kilograms converted to pounds.
-    return 0.0;
+    return kilograms*POUNDS_PER_KILOGRAM;
 }
 
 double fahrenheitToCelsius(double fahrenheit) {
     // TODO: return Fahrenheit converted to Celsius.
-    return 0.0;
+    return ((fahrenheit-32) * 5 / 9);
 }
 
 double celsiusToFahrenheit(double celsius) {
     // TODO: return Celsius converted to Fahrenheit.
-    return 0.0;
+    return ((celsius * 9 / 5) + 32);
 }
 
 bool isValidMenuChoice(int choice) {
     // TODO: return true when choice is between EXIT_CHOICE and CELSIUS_TO_FAHRENHEIT.
+    if (choice >= 0 && choice <= CELSIUS_TO_FAHRENHEIT) return true;
     return false;
 }
 
@@ -42,6 +43,7 @@ bool requiresNonNegativeValue(int choice) {
     // Length and weight conversions cannot use negative values.
     // Temperature conversions may use negative values.
     // TODO: return true for choices 1 through 4.
+    if (choice >= INCHES_TO_CENTIMETERS && choice <= KILOGRAMS_TO_POUNDS) return true;
     return false;
 }
 
@@ -50,7 +52,11 @@ bool isValidValueForChoice(int choice, double value) {
     // 1. Invalid menu choices should return false.
     // 2. Length and weight conversions should reject negative values.
     // 3. Temperature conversions should allow negative values.
-    return false;
+    if (!isValidMenuChoice(choice)) return false;
+    if (requiresNonNegativeValue(choice) && value < 0){
+        return false;
+    }
+    return true;
 }
 
 void printMenu() {
