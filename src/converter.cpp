@@ -52,9 +52,7 @@ bool isValidValueForChoice(int choice, double value) {
     // 2. Length and weight conversions should reject negative values.
     // 3. Temperature conversions should allow negative values.
     if (!isValidMenuChoice(choice)) return false;
-    if (requiresNonNegativeValue(choice) && value < 0){
-        return false;
-    }
+    if (requiresNonNegativeValue(choice) && value < 0) return false;
     return true;
 }
 
